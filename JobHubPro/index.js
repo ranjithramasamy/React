@@ -1,43 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+
+import Header from './header.js';
+import Content from './content.js';
+
 import './index.css';
-import { Menu, Icon, Avatar } from 'antd';
 
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
-
-class App extends React.Component {
-  state = {
-    current: 'mail',
-  }
-
-  handleClick = (e) => {
-    console.log('click ', e);
-    this.setState({
-      current: e.key,
-    });
-  }
-
+class App extends Component {
   render() {
     return (
-      <Menu
-        onClick={this.handleClick}
-        selectedKeys={[this.state.current]}
-        mode="horizontal">
-        <span style={{ color: '#87d068', fontWeight: 'bold', fontSize: '18px'}}> JobHub Pro</span>
-        <Menu.Item style={ {float:'right'} } key="myaccount">
-          <Icon type="user" theme="outlined" />MY ACCOUNT
-        </Menu.Item>
-        <Menu.Item style={ {float:'right'} } key="search">
-          SEARCH
-        </Menu.Item>
-        <Menu.Item style={ {float:'right'} } key="browse">
-          BROWSE
-        </Menu.Item>
-        <Menu.Item style={ {float:'right'} } key="howitworks">
-          HOW IT WORKS
-        </Menu.Item>
-      </Menu>
+      <div style={{backgroundColor: '#F9F9F9', height: '100%'}}>
+        <Header />
+        <br/>
+        <Content />
+      </div>
     );
   }
 }
