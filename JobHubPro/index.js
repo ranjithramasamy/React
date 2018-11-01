@@ -9,7 +9,7 @@ import './index.css';
 class App extends Component {
   render() {
     return (
-      <div style={{backgroundColor: '#F9F9F9', height: '100%'}}>
+      <div style={{backgroundColor: '#F9F9F9'}}>
         <Header />
         <br/>
         <Content />

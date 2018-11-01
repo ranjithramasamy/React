@@ -25,7 +25,7 @@ class Header extends Component {
               <span style={{color: '#87d068', fontWeight: 'bold', fontSize: '18px'}}> JobHub Pro</span>
           </Menu.Item>
           <Menu.Item style={ {float:'right'} } key="myaccount">
-            MY ACCOUNT
+            <Icon type="user" theme="outlined" /> MY ACCOUNT
           </Menu.Item>
           <Menu.Item style={ {float:'right'} } key="search">
             SEARCH

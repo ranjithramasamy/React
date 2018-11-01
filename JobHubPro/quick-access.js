@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Card } from 'antd';
+import { Row, Col, Divider, Card, Icon } from 'antd';
+
+const { Meta } = Card;
 
 class QuickAccess extends Component {
   constructor() {
@@ -8,9 +10,34 @@ class QuickAccess extends Component {
 
   render() {
 	return (
-      <Card style={{ width: '100%', height: 275 }}>
-          <p>Quick Access</p>
-      </Card>
+	  <div>
+	    <Row>
+          <Col span={24}>
+            <Card style={{ width: '100%' }}
+              cover={<img alt="example" src="http://www.managingamericans.com/pub/images/20140129163952_ThreeEffectiveOnlineJobSearchStrategies.jpg" />}
+              actions={[<Icon type="login" />, <Icon type="wechat" />, <Icon type="edit" />]}>
+
+              <Meta title="JobHub Pro" description="Pay only for the hours worked"/>
+            </Card>
+          </Col>
+        </Row><br/><br/>
+        <Row>
+            <Col span={8}><b>TOP JOBS</b></Col>
+        </Row>
+        <Divider />
+        <Row>
+            <Col span={18}>Lead UI Angular 2/4/5</Col>
+            <Col span={6}>$102/hr</Col>
+        </Row>
+        <Row>
+            <Col span={18}>Senior Java Developer</Col>
+            <Col span={6}>$84/hr</Col>
+        </Row>
+        <Row>
+            <Col span={18}>Bigdata Analytics</Col>
+            <Col span={6}>$79/hr</Col>
+        </Row>
+      </div>
 	);
   }
 }
