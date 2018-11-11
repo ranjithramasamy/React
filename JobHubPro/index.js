@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from './header.js';
-import Content from './content.js';
+import Header from './home/components/header.js';
+import Content from './home/components/content.js';
 
 import './index.css';
 

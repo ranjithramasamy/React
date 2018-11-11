@@ -5,12 +5,6 @@ import JDWizard from './jd-wizard.js';
 
 const Option = Select.Option;
 
-const sortByOpt = [];
-
-sortByOpt.push(<Option key='relevance'>Relevance</Option>);
-sortByOpt.push(<Option key='posteddt'>Posted Date</Option>);
-sortByOpt.push(<Option key='hprice'>Hourly Price</Option>);
-
 const result = {
     total: 16,
     jobs: [{
@@ -43,6 +37,12 @@ class SearchResults extends Component {
   }
 
   render() {
+    const sortByOpt = [];
+
+    sortByOpt.push(<Option key='relevance'>Relevance</Option>);
+    sortByOpt.push(<Option key='posteddt'>Posted Date</Option>);
+    sortByOpt.push(<Option key='hprice'>Hourly Price</Option>);
+
 	return (
       <Card style={{ width: '100%'}}>
         <p>

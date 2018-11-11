@@ -1,36 +1,24 @@
 import React, { Component } from 'react';
 import { Row, Col, Divider, Icon, Select, Checkbox, Tooltip } from 'antd';
 
+import { dataService } from '../services/data-service';
+
 const Option = Select.Option;
 const CheckboxGroup = Checkbox.Group;
-const skillsOpt = [];
-
-skillsOpt.push(<Option key='java'>Java</Option>);
-skillsOpt.push(<Option key='php'>PHP</Option>);
-skillsOpt.push(<Option key='ui'>UI</Option>);
-skillsOpt.push(<Option key='mobile'>Mobile</Option>);
-skillsOpt.push(<Option key='dotnet'>.Net</Option>);
-skillsOpt.push(<Option key='bigdata'>BigData</Option>);
-skillsOpt.push(<Option key='datascience'>Data Science</Option>);
-skillsOpt.push(<Option key='python'>Python</Option>);
-
-const availability = [
-  { label: 'Hourly', value: 'hourly' },
-  { label: 'Part-time (20 hrs/wk)', value: 'part20' },
-  { label: 'Part-time (40 hrs/wk)', value: 'part40' },
-];
-
-const jobTypeOpt = [];
-
-jobTypeOpt.push(<Option key='softeng'>Software Engineer</Option>);
-jobTypeOpt.push(<Option key='techlead'>Technical Lead</Option>);
-jobTypeOpt.push(<Option key='prgmgmt'>Program Management</Option>);
-jobTypeOpt.push(<Option key='plead'>Project Lead</Option>);
-jobTypeOpt.push(<Option key='autoqa'>QA Automation</Option>);
 
 class Filters extends Component {
-  constructor() {
-  	super();
+  constructor(props) {
+      super(props);
+
+      this.state = {
+        jobTypes: [],
+        skills: []
+      };
+  }
+
+  componentDidMount() {
+      dataService.getJobTypes().then(data => this.setState({ jobTypes: data }));
+      dataService.getSkills().then(data => this.setState({ skills: data }));
   }
 
   onSkillsSelectChange(value) {
@@ -46,6 +34,13 @@ class Filters extends Component {
   }
 
   render() {
+    const { jobTypes, skills } = this.state;
+    const availability = [
+      { label: 'Hourly', value: 'hourly' },
+      { label: 'Part-time (20 hrs/wk)', value: 'part20' },
+      { label: 'Part-time (40 hrs/wk)', value: 'part40' },
+    ];
+
 	return (
       <div>
         <Row>
@@ -61,7 +56,9 @@ class Filters extends Component {
             <Col span={24}>
                 <Select mode="multiple" size="large" placeholder="Please select your skills"
                     style={{ width: '100%' }} onChange={value => this.onSkillsSelectChange(value)}>
-                    { skillsOpt }
+                    { skills.map((item) => {
+                            return <Option key={item.id}>{item.desc}</Option>;
+                    })}
                 </Select>
             </Col>
         </Row><br/><br/>
@@ -82,7 +79,9 @@ class Filters extends Component {
           <Col span={24}>
             <Select size="large" placeholder="Please select job type"
                 style={{ width: '100%' }} onChange={value => this.onJobTypeSelectChange(value)}>
-                { jobTypeOpt }
+                { jobTypes.map((item) => {
+                        return <Option key={item.id}>{item.jobType}</Option>;
+                })}
             </Select>
           </Col>
         </Row>
