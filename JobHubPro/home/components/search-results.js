@@ -2,46 +2,40 @@ import React, { Component } from 'react';
 import { Card, Select } from 'antd';
 
 import JDWizard from './jd-wizard.js';
+import { dataService } from '../services/data-service';
 
 const Option = Select.Option;
-
-const result = {
-    total: 16,
-    jobs: [{
-        title: "Senior PHP Developer",
-        availability: "hourly",
-        location: "Chennai, IND",
-        price: "$78 / hr",
-        description: "Software Engineer, with the hard core Java skills, strong experience in Node.js, Reach.js, angular.js technologies. The candidate must have complete understanding with hands-on experience in architecture, design, coding and testing aspect of both front end and backend services.",
-        rating: "82%",
-        tags: ["Java", "UX", "Android", "Javascript"]
-    },
-    {
-        title: "Lead Java Developer",
-        availability: "part-time",
-        location: "Bangalore, IND",
-        price: "$55 / hr",
-        description: "Software Engineer, with the hard core Java skills, strong experience in Node.js, Reach.js, angular.js technologies. The candidate must have complete understanding with hands-on experience in architecture, design, coding and testing aspect of both front end and backend services.",
-        rating: "76%",
-        tags: ["Java", "J2EE", "Web", "Javascript"]
-    }]
-};
 
 class SearchResults extends Component {
   constructor() {
 	super();
+
+	this.state = {
+        result: {
+            total: 0,
+            jobsList: []
+        }
+    };
   }
 
-  onSortByFilterChange(value) {
-      console.log(`selected ${value}`);
+  componentDidMount() {
+      dataService.searchJobs({}).then(data => this.setState({ result: data }));
+  }
+
+  refreshSearchResults(data){
+    this.setState({ result: data });
+  }
+
+  onSortByFilterChange(key) {
+      dataService.searchJobs({sortby: key}).then(data => this.setState({ result: data }));
   }
 
   render() {
+    const { result } = this.state;
     const sortByOpt = [];
 
-    sortByOpt.push(<Option key='relevance'>Relevance</Option>);
-    sortByOpt.push(<Option key='posteddt'>Posted Date</Option>);
-    sortByOpt.push(<Option key='hprice'>Hourly Price</Option>);
+    sortByOpt.push(<Option key='postedOn'>Posted Date</Option>);
+    sortByOpt.push(<Option key='wagePerHour'>Hourly Price</Option>);
 
 	return (
       <Card style={{ width: '100%'}}>
@@ -55,8 +49,9 @@ class SearchResults extends Component {
                 </Select>
             </span>
         </p><br/>
-        <JDWizard data= {result.jobs[0]}/><br/>
-        <JDWizard data= {result.jobs[1]}/>
+        { result.jobsList.map((item) => {
+            return <p><JDWizard data= {item}/><br/></p>;
+        })}
       </Card>
 	);
   }

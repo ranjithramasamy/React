@@ -5,15 +5,24 @@ import Filters from './filters.js';
 import SearchResults from './search-results.js';
 import QuickAccess from './quick-access.js';
 
+import { dataService } from '../services/data-service';
+
 const Search = Input.Search;
 
 class Content extends Component {
-  constructor() {
-	super();
+  constructor(props) {
+	super(props);
+	this.searchResultsRef = React.createRef();
+	this.applyFilters = this.applyFilters.bind(this);
+  }
+
+  applyFilters(criteria){
+    dataService.searchJobs(criteria).then(data => this.searchResultsRef.current.refreshSearchResults(data));
   }
 
   onSearchHandler(searchText){
       console.log(searchText);
+      this.applyFilters({keyword: searchText});
   }
 
   render() {
@@ -29,8 +38,8 @@ class Content extends Component {
           </Row><br/>
           <Row gutter={16}>
             <Col span={1} />
-            <Col span={6}><Filters /></Col>
-            <Col span={11}><SearchResults /></Col>
+            <Col span={6}><Filters parentRef={this.applyFilters} /></Col>
+            <Col span={11}><SearchResults ref={this.searchResultsRef}/></Col>
             <Col span={5}><QuickAccess /></Col>
             <Col span={1} />
           </Row>

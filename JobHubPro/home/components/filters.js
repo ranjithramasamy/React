@@ -10,6 +10,7 @@ class Filters extends Component {
   constructor(props) {
       super(props);
 
+      this.criteria = {};
       this.state = {
         jobTypes: [],
         skills: []
@@ -22,23 +23,30 @@ class Filters extends Component {
   }
 
   onSkillsSelectChange(value) {
-    console.log(`selected ${value}`);
+    this.criteria.skills = value;
+    this.props.parentRef(this.criteria)
   }
 
-  onAvailChkGrpChange(checkedValues) {
-    console.log('checked = ', checkedValues);
+  onAvailChkGrpChange(values) {
+    console.log('checked = ', values);
+
+    this.criteria.availability = values;
+    this.props.parentRef(this.criteria)
   }
 
   onJobTypeSelectChange(value) {
     console.log(`selected ${value}`);
+
+    this.criteria.jobType = value;
+    this.props.parentRef(this.criteria)
   }
 
   render() {
     const { jobTypes, skills } = this.state;
     const availability = [
-      { label: 'Hourly', value: 'hourly' },
-      { label: 'Part-time (20 hrs/wk)', value: 'part20' },
-      { label: 'Part-time (40 hrs/wk)', value: 'part40' },
+      { label: 'Hourly', value: '1' },
+      { label: 'Part-time (20 hrs/wk)', value: '20' },
+      { label: 'Part-time (40 hrs/wk)', value: '40' },
     ];
 
 	return (
@@ -57,7 +65,7 @@ class Filters extends Component {
                 <Select mode="multiple" size="large" placeholder="Please select your skills"
                     style={{ width: '100%' }} onChange={value => this.onSkillsSelectChange(value)}>
                     { skills.map((item) => {
-                            return <Option key={item.id}>{item.desc}</Option>;
+                            return <Option key={item.desc}>{item.desc}</Option>;
                     })}
                 </Select>
             </Col>
@@ -88,6 +96,10 @@ class Filters extends Component {
       </div>
 	);
   }
+}
+
+function updateStateData(data) {
+    this.setState(data)
 }
 
 export default Filters;
