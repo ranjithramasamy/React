@@ -17,11 +17,11 @@ class Content extends Component {
   }
 
   applyFilters(criteria){
-    dataService.searchJobs(criteria).then(data => this.searchResultsRef.current.refreshSearchResults(data));
+    this.searchResultsRef.current.refreshSearchResults(criteria);
+    //dataService.searchJobs(criteria).then(data => this.searchResultsRef.current.refreshSearchResults(data));
   }
 
   onSearchHandler(searchText){
-      console.log(searchText);
       this.applyFilters({keyword: searchText});
   }
 

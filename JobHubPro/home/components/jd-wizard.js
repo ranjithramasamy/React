@@ -14,8 +14,8 @@ class JDWizard extends Component {
           <p>Reply Rate: <b>{this.props.data.rating}%</b></p>
           <p>{this.props.data.jobDesc}</p>
           <p>
-          { this.props.data.tags.map((tag) => {
-               return <span><Badge count={tag} style={{ backgroundColor: '#fff', color: '#999', boxShadow: '0 0 0 1px #d9d9d9 inset' }}></Badge>&nbsp;</span>
+          { this.props.data.skills.map((skill) => {
+               return <span><Badge count={skill} style={{ backgroundColor: '#fff', color: '#999', boxShadow: '0 0 0 1px #d9d9d9 inset' }}></Badge>&nbsp;</span>
           })}
           </p>
       </Card>
