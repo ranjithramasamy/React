@@ -1,12 +1,42 @@
-// Learn more on how to config.
-// - https://github.com/ant-tool/atool-build#配置扩展
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const  glob = require('glob');
 
-module.exports = function(webpackConfig) {
-  webpackConfig.babel.plugins.push('transform-runtime');
-  webpackConfig.babel.plugins.push(['import', {
-    libraryName: 'antd',
-    style: 'css',
-  }]);
-
-  return webpackConfig;
+const config = {
+  entry: {
+    js: glob.sync('./src/**/*.js')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  output: {
+    path:path.join(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({template: './src/index.html'})
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    port:8000,
+    open:true,
+    hot: true
+  }
 };
+
+module.exports = config;

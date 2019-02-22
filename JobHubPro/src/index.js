@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import Header from './home/components/header.js';
 import Content from './home/components/content.js';
 
-import './index.css';
+import styles from './index.css';
 
 class App extends Component {
   render() {
     return (
-      <div style={{backgroundColor: '#F9F9F9'}}>
+      <div className={styles.appBackground}>
         <Header />
         <br/>
         <Content />
