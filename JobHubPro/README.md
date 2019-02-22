@@ -4,15 +4,14 @@
 <h4>Getting Started:</h4>
 	To clone project locally,
 	
-	<b>git clone https://github.com/ranjithramasamy/React.git</b>
+	git clone https://github.com/ranjithramasamy/React.git
 	
 <h4>Build and Run:</h4>
 	
-	<b>cd JobHubPro</b>	
-	<b>npm install</b>	
-	<b>npm start<b>
+	cd JobHubPro	
+	npm install	
+	npm start
 	
 	Webpack will start listening on port 8000, thus you may hit below url in your browser to see the output.
 	
 	http://localhost:8000/
-	
