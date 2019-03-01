@@ -3,7 +3,7 @@ import {Card, Select, Spin, message} from 'antd';
 
 import JDWizard from './jd-wizard.jsx';
 import {dataService} from '../services/data-service';
-import {MESSAGE_CONSTANTS} from '../constants/global-constants';
+import {MESSAGE_CONSTANTS} from '../../global.constants';
 
 const Option = Select.Option;
 

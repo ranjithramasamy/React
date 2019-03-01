@@ -1,22 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-import Header from './home/components/header/header.jsx';
-import Content from './home/components/content.jsx';
+import HomeApp from "./home/home.index";
+import globalStore from "./global.store";
 
-import styles from './index.module.css';
-import "./app.global.css";
+import "./global.theme.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div className={styles.appBackground}>
-        <Header />
-        <br/>
-        <Content />
-      </div>
-    );
-  }
-}
+ReactDOM.render(
+  <Provider store={globalStore}>
+    <HomeApp />
+  </Provider>,
 
-ReactDOM.render(<App />, document.getElementById('root'));
+  document.getElementById('root')
+);
