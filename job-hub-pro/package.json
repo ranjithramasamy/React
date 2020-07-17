@@ -3,20 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.13.6",
-    "node-sass": "^4.11.0",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "antd": "^3.26.18",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-redux": "^6.0.1",
     "react-scripts": "2.1.5",
-    "redux": "^4.0.1",
+    "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docker-build": "docker build -f Dockerfile -t job-hub-pro-frontend:prod .",
+    "docker-build-up": "docker-compose -f docker-compose-prod.yml up --build",
+    "docker-up": "docker-compose -f docker-compose-prod.yml up",
+    "docker-down": "docker-compose -f docker-compose-prod.yml down"
   },
   "eslintConfig": {
     "extends": "react-app"
