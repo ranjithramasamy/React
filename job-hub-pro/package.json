@@ -18,9 +18,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "docker-build": "docker build -f Dockerfile -t job-hub-pro-frontend:prod .",
-    "docker-build-up": "docker-compose -f docker-compose-prod.yml up --build",
-    "docker-up": "docker-compose -f docker-compose-prod.yml up",
-    "docker-down": "docker-compose -f docker-compose-prod.yml down"
+    "docker-build-up": "docker-compose -f docker-compose.yml up --build",
+    "docker-up": "docker-compose -f docker-compose.yml up",
+    "docker-down": "docker-compose -f docker-compose.yml down"
   },
   "eslintConfig": {
     "extends": "react-app"
