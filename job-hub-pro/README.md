@@ -1,6 +1,7 @@
 <h2>Job Hub Pro</h2>
 	This Online Career Center has developed as a non-profit organization backed by forty major corporations to allow job hunters to post their resumes and for recruiters to post job openings.
-    ![Image of JobHubPro](https://github.com/ranjithramasamy/React/blob/master/job-hub-pro/jobhubpro.PNG)
+	
+![Image of JobHubPro](https://github.com/ranjithramasamy/React/blob/master/job-hub-pro/jobhubpro.PNG)
 
 <h4>Getting Started:</h4>
 	To clone project locally,
