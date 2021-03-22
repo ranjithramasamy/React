@@ -12,15 +12,9 @@ class Header extends Component {
     }
   }
 
-  handleClick(e) {
-    this.setState({
-      current: e.key,
-    });
-  }
-
   render() {
     return (
-      <Menu mode="horizontal" onClick={this.handleClick} selectedKeys={[this.state.current]}>
+      <Menu mode="horizontal" selectedKeys={[this.state.current]}>
         <Menu.Item key="logo">
           <span className={styles.headerLogo}> JobHub Pro</span>
         </Menu.Item>

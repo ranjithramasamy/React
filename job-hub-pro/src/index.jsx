@@ -1,16 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 
-import HomeApp from "./home/home.index";
-import globalStore from "./global.store";
+import HomeApp from "./app/components/home/home.index";
 
 import "./global.theme.css";
 
-ReactDOM.render(
-  <Provider store={globalStore}>
-    <HomeApp />
-  </Provider>,
-
-  document.getElementById('root')
-);
+ReactDOM.render(<HomeApp/>, document.getElementById('root'));
